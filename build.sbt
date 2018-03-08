@@ -16,7 +16,10 @@ lazy val root = (project in file(".")).
       val twitterServerVersion = "18.3.0"
       val finchVersion = "0.17.0"
       val scalaTestVersion = "3.0.5"
+      val circeVersion = "0.9.1"
       Seq(
+        "io.circe" %% "circe-generic" % circeVersion,
+        "io.circe" %% "circe-parser" % circeVersion,
         "com.twitter" %% "twitter-server" % twitterServerVersion,
         "com.github.finagle" %% "finch-core" % finchVersion,
         "com.github.finagle" %% "finch-circe" % finchVersion,
