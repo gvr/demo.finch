@@ -8,16 +8,19 @@ lazy val commonSettings = Seq(
 
 lazy val root = (project in file(".")).
   configs(IntegrationTest).
-  settings(commonSettings: _*).
-  settings(Defaults.itSettings: _*).
+  settings(commonSettings).
+  settings(Defaults.itSettings).
   settings(
     name := "demo-finch",
     libraryDependencies ++= {
+      val twitterServerVersion = "18.3.0"
       val finchVersion = "0.17.0"
       val scalaTestVersion = "3.0.5"
       Seq(
+        "com.twitter" %% "twitter-server" % twitterServerVersion,
         "com.github.finagle" %% "finch-core" % finchVersion,
-        "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+        "com.github.finagle" %% "finch-circe" % finchVersion,
+        "org.scalatest" %% "scalatest" % scalaTestVersion % Test
       )
     }
   )
